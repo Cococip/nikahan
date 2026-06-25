@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ji-hoon & Ha-eun | The Archive</title>
+    
+    <!-- Ultra-Premium Typography (With Korean Support) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- GSAP & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Override fonts for Korean */
+        body, .mono-label, .btn-enter, .btn-outline, .btn-solid, input, select, textarea {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif !important;
+        }
+        h1, h2, h3, .massive-title, .editorial-quote, .pro-text h2, .s-event h3, .rsvp-text h2 {
+            font-family: 'Playfair Display', 'Noto Serif KR', serif !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- YouTube Audio Player (Hidden) -->
+    <iframe id="youtube-audio" src="https://www.youtube.com/embed/r2n8VCmmvIE?enablejsapi=1&autoplay=0&loop=1&playlist=r2n8VCmmvIE" frameborder="0" style="display:none;" allow="autoplay"></iframe>
+
+    <button class="music-toggle" id="musicBtn">AUDIO [OFF]</button>
+
+    <!-- The Gate (Clear Wedding Cover) -->
+    <div class="gate-overlay" id="cover">
+        <div class="gate-image-wrapper">
+            <video class="gate-img" autoplay loop muted playsinline>
+                <source src="assets/vid.mp4" type="video/mp4">
+            </video>
+            <div class="gate-gradient"></div>
+        </div>
+        
+        <div class="gate-ui" style="align-items: center; text-align: center;">
+            <div class="gate-top" style="margin-top: 5vh;">
+                <span class="mono-label">THE WEDDING DOCUMENTARY | 웨딩 다큐멘터리</span>
+            </div>
+            
+            <div class="gate-center" style="margin: auto 0;">
+                <h1 class="massive-title">Ji-hoon <br><span>&</span> Ha-eun</h1>
+                <p class="mono-label" style="margin-top: 1.5rem; font-size: 0.9rem;">2026년 8월 20일</p>
+            </div>
+            
+            <div class="gate-bottom" style="flex-direction: column; align-items: center; margin-bottom: 5vh;">
+                <p class="guest-label" style="margin-bottom: 0.5rem; color:#fff;">귀하를 초대합니다:</p>
+                <h2 id="guestName" class="guest-name" style="margin-bottom: 2rem;">귀빈 여러분</h2>
+                <button class="btn-enter" id="btnOpen" style="padding: 1rem 3rem; font-size: 0.85rem; letter-spacing: 0.2em; border-color: rgba(255,255,255,0.3);">
+                    초대장 열기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-wrapper" id="mainContent">
+
+        <!-- Marquee Divider -->
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <span>비디오그래퍼의 시선 • 기자의 이야기 • A VIDEOGRAPHER'S LENS • A REPORTER'S NARRATIVE • 비디오그래퍼의 시선 • 기자의 이야기 • A VIDEOGRAPHER'S LENS • A REPORTER'S NARRATIVE •</span>
+                <span>비디오그래퍼의 시선 • 기자의 이야기 • A VIDEOGRAPHER'S LENS • A REPORTER'S NARRATIVE • 비디오그래퍼의 시선 • 기자의 이야기 • A VIDEOGRAPHER'S LENS • A REPORTER'S NARRATIVE •</span>
+            </div>
+        </div>
+
+        <!-- The Prologue -->
+        <section class="section prologue">
+            <div class="container">
+                <div class="prologue-layout">
+                    <div class="pro-text reveal-up">
+                        <span class="section-index">01 / 프롤로그 (PROLOGUE)</span>
+                        <h2>수천 프레임의 카메라와 수백 장의 뉴스 기사 속에서, 우리는 영원히 간직할 가치가 있는 단 하나의 이야기를 찾았습니다.</h2>
+                    </div>
+                    <div class="pro-img parallax-container">
+                        <img src="assets/4.jpeg" alt="Prologue" class="parallax-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Protagonists -->
+        <section class="section protagonists">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-index">02 / 주인공들 (PROTAGONISTS)</span>
+                </div>
+
+                <div class="protagonists-grid">
+                    <!-- Groom -->
+                    <div class="pro-card">
+                        <div class="pro-img-box parallax-container">
+                            <img src="assets/cowo.png" alt="Ji-hoon" class="parallax-img">
+                            <div class="pro-role mono-label">촬영 감독 (D.O.P)</div>
+                        </div>
+                        <div class="pro-info reveal-up">
+                            <h3>박지훈 (Park Ji-hoon)</h3>
+                            <p>박씨 가문의 장남.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bride -->
+                    <div class="pro-card">
+                        <div class="pro-img-box parallax-container mt-offset">
+                            <img src="assets/cewe.jpeg" alt="Ha-eun" class="parallax-img">
+                            <div class="pro-role mono-label">편집장 / 앵커 (ANCHOR)</div>
+                        </div>
+                        <div class="pro-info reveal-up">
+                            <h3>김하은 (Kim Ha-eun)</h3>
+                            <p>김씨 가문의 장녀.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Schedule -->
+        <section class="section schedule">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-index">03 / 일정 (THE ITINERARY)</span>
+                </div>
+
+                <div class="schedule-table reveal-up">
+                    <div class="s-row">
+                        <div class="s-col s-time mono-label">오전 09:00<br>2026년 8월 20일</div>
+                        <div class="s-col s-event">
+                            <h3>결혼 서약 (The Vow)</h3>
+                            <p>자카르타 대성당 (Jakarta Grand Cathedral)</p>
+                        </div>
+                        <div class="s-col s-action">
+                            <a href="#" class="btn-outline">지도 보기</a>
+                        </div>
+                    </div>
+
+                    <div class="s-row">
+                        <div class="s-col s-time mono-label">오후 06:00<br>2026년 8월 20일</div>
+                        <div class="s-col s-event">
+                            <h3>피로연 (The Celebration)</h3>
+                            <p>그랜드 물리아 호텔, 자카르타</p>
+                        </div>
+                        <div class="s-col s-action">
+                            <a href="#" class="btn-outline">지도 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Archive (Gallery) -->
+        <section class="section archive">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-index">04 / 아카이브 (THE ARCHIVE)</span>
+                </div>
+
+                <!-- High Fashion Editorial Grid -->
+                <div class="archive-grid">
+                    <div class="a-item a-large parallax-container">
+                        <img src="assets/7.jpeg" alt="Archive" class="parallax-img">
+                        <span class="img-caption mono-label">기록 번호 1 (DOCUMENT NO. 1)</span>
+                    </div>
+                    <div class="a-item a-square parallax-container">
+                        <img src="assets/5.jpeg" alt="Archive" class="parallax-img">
+                    </div>
+                    <div class="a-item a-square parallax-container">
+                        <img src="assets/6.jpeg" alt="Archive" class="parallax-img">
+                    </div>
+                    <div class="a-item a-wide parallax-container">
+                        <img src="assets/8.jpeg" alt="Archive" class="parallax-img">
+                        <span class="img-caption mono-label">기록 번호 2 (DOCUMENT NO. 2)</span>
+                    </div>
+                    <div class="a-item a-wide parallax-container">
+                        <img src="assets/10.jpeg" alt="Archive" class="parallax-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The RSVP -->
+        <section class="section rsvp">
+            <div class="container">
+                <div class="rsvp-container reveal-up">
+                    <div class="rsvp-text">
+                        <span class="section-index">05 / 참석 여부 (ATTENDANCE)</span>
+                        <h2>참석 여부를 확인해 주세요</h2>
+                        <p class="mono-label">우리 이야기의 일부가 되어주세요</p>
+                    </div>
+
+                    <form class="clean-form" id="rsvpForm">
+                        <div class="input-group">
+                            <input type="text" id="name" placeholder="성함 (Full Name)" required>
+                        </div>
+                        <div class="input-group">
+                            <select id="attendance" required>
+                                <option value="" disabled selected>참석하시겠습니까?</option>
+                                <option value="Hadir">기쁜 마음으로 참석합니다 (Joyfully Accepts)</option>
+                                <option value="Tidak Hadir">아쉽게도 참석하지 못합니다 (Regretfully Declines)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="message" rows="3" placeholder="축하 메시지를 남겨주세요..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-solid">응답 제출 (SUBMIT RESPONSE)</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer text-center">
+            <div class="container reveal-up">
+                <h1 class="massive-title footer-title">JH & HE</h1>
+                <p class="mono-label">지훈 & 하은 제작 © 2026 (A PRODUCTION BY JI-HOON & HA-EUN)</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="js/script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

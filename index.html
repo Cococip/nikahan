@@ -201,12 +201,15 @@
                         <div class="input-group">
                             <input type="text" id="name" placeholder="성함 (Full Name)" required>
                         </div>
-                        <div class="input-group">
-                            <select id="attendance" required>
-                                <option value="" disabled selected>참석하시겠습니까?</option>
-                                <option value="Hadir">기쁜 마음으로 참석합니다 (Joyfully Accepts)</option>
-                                <option value="Tidak Hadir">아쉽게도 참석하지 못합니다 (Regretfully Declines)</option>
-                            </select>
+                        <div class="input-group custom-select-wrapper">
+                            <div class="custom-select" id="customSelect">
+                                <span class="custom-select-trigger">참석하시겠습니까? (Will you attend?)</span>
+                                <div class="custom-options">
+                                    <div class="custom-option" data-value="Hadir">기쁜 마음으로 참석합니다 (Joyfully Accepts)</div>
+                                    <div class="custom-option" data-value="Tidak Hadir">아쉽게도 참석하지 못합니다 (Regretfully Declines)</div>
+                                </div>
+                            </div>
+                            <input type="text" id="attendance" required style="position: absolute; opacity: 0; height: 0; width: 0; pointer-events: none;">
                         </div>
                         <div class="input-group">
                             <textarea id="message" rows="3" placeholder="축하 메시지를 남겨주세요..." required></textarea>

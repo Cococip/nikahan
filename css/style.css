@@ -316,7 +316,7 @@ img { width: 100%; display: block; }
 .rsvp-text h2 { font-size: clamp(3rem, 5vw, 5rem); margin: 1rem 0; line-height: 1; }
 
 .clean-form .input-group { margin-bottom: 2rem; }
-.clean-form input, .clean-form select, .clean-form textarea {
+.clean-form input, .clean-form textarea {
     width: 100%;
     background: transparent;
     border: none;
@@ -327,13 +327,93 @@ img { width: 100%; display: block; }
     font-size: 1.2rem;
     resize: none;
 }
-.clean-form option {
-    background-color: var(--bg-main);
-    color: var(--text-main);
-}
-.clean-form input:focus, .clean-form select:focus, .clean-form textarea:focus {
+.clean-form input:focus, .clean-form textarea:focus {
     outline: none;
     border-bottom-color: var(--text-main);
+}
+
+/* Custom Select Dropdown */
+.custom-select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 100%;
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.custom-select.open {
+    border-bottom-color: var(--text-main);
+    color: var(--text-main);
+}
+
+.custom-select-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-select-trigger::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid var(--text-muted);
+    border-bottom: 1px solid var(--text-muted);
+    transform: translateY(-4px) rotate(45deg);
+    transition: var(--transition);
+}
+
+.custom-select.open .custom-select-trigger::after {
+    transform: translateY(2px) rotate(-135deg);
+    border-color: var(--text-main);
+}
+
+.custom-options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #111111;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.custom-select.open .custom-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.custom-option {
+    padding: 1rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.custom-option:hover {
+    background: rgba(255, 255, 255, 0.05);
 }
 .btn-solid {
     background: var(--text-main);

@@ -133,6 +133,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. (Marquee handled seamlessly in CSS)
 
+    // --- Custom Select Logic ---
+    const customSelect = document.getElementById('customSelect');
+    const attendanceInput = document.getElementById('attendance');
+    
+    if (customSelect) {
+        const trigger = customSelect.querySelector('.custom-select-trigger');
+        const options = customSelect.querySelectorAll('.custom-option');
+        
+        trigger.addEventListener('click', () => {
+            customSelect.classList.toggle('open');
+        });
+        
+        options.forEach(option => {
+            option.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                const text = this.innerText;
+                
+                trigger.innerText = text;
+                trigger.style.color = '#f0f0f0';
+                attendanceInput.value = value;
+                
+                customSelect.classList.remove('open');
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!customSelect.contains(e.target)) {
+                customSelect.classList.remove('open');
+            }
+        });
+    }
+
     // --- RSVP Form ---
     const rsvpForm = document.getElementById('rsvpForm');
     if(rsvpForm) {
@@ -146,6 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const attendance = document.getElementById('attendance').value;
             const message = document.getElementById('message').value;
             
+            if(!attendance) {
+                alert("Silakan pilih status kehadiran terlebih dahulu.");
+                return;
+            }
+
             btn.innerText = '전송 중... (SENDING...)';
             btn.style.opacity = '0.5';
             
@@ -164,6 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.open(waUrl, '_blank');
                 
                 rsvpForm.reset();
+                trigger.innerText = "참석하시겠습니까? (Will you attend?)"; // reset custom select text
+                trigger.style.color = "";
                 
                 setTimeout(() => {
                     btn.innerText = originalText;

@@ -75,7 +75,7 @@ img { width: 100%; display: block; }
 /* The Gate (Cover) */
 .gate-overlay {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh;
+    top: 0; left: 0; width: 100%; bottom: 0;
     z-index: 5000;
     background: var(--bg-main);
     display: flex;
@@ -111,6 +111,8 @@ img { width: 100%; display: block; }
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .gate-top {

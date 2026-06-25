@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(rsvpForm) {
         rsvpForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const btn = rsvpForm.querySelector('.btn-solid');
+            const btn = rsvpForm.querySelector('button[type="submit"]');
             const originalText = btn.innerText;
             
             // Get form values

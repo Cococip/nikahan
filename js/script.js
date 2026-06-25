@@ -141,6 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = rsvpForm.querySelector('.btn-solid');
             const originalText = btn.innerText;
             
+            // Get form values
+            const name = document.getElementById('name').value;
+            const attendance = document.getElementById('attendance').value;
+            const message = document.getElementById('message').value;
+            
             btn.innerText = '전송 중... (SENDING...)';
             btn.style.opacity = '0.5';
             
@@ -149,6 +154,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.style.backgroundColor = '#4CAF50';
                 btn.style.color = '#fff';
                 btn.style.opacity = '1';
+                
+                // Construct WhatsApp message
+                const phone = "6281234567890"; // TODO: Ganti dengan nomor WhatsApp tujuan
+                const waText = `Halo, saya ${name}.\nKonfirmasi Kehadiran: ${attendance}\nPesan: ${message}`;
+                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
+                
+                // Open WhatsApp in new tab
+                window.open(waUrl, '_blank');
+                
                 rsvpForm.reset();
                 
                 setTimeout(() => {
@@ -156,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.style.backgroundColor = '';
                     btn.style.color = '';
                 }, 3000);
-            }, 1500);
+            }, 1000);
         });
     }
 });

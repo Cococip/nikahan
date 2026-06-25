@@ -327,6 +327,10 @@ img { width: 100%; display: block; }
     font-size: 1.2rem;
     resize: none;
 }
+.clean-form option {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
 .clean-form input:focus, .clean-form select:focus, .clean-form textarea:focus {
     outline: none;
     border-bottom-color: var(--text-main);

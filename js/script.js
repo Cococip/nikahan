@@ -211,8 +211,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 responseList.prepend(responseItem);
                 
                 rsvpForm.reset();
-                trigger.innerText = "참석하시겠습니까? (Will you attend?)"; // reset custom select text
-                trigger.style.color = "";
+                const selectTrigger = document.querySelector('.custom-select-trigger');
+                if (selectTrigger) {
+                    selectTrigger.innerText = "참석하시겠습니까? (Will you attend?)"; // reset custom select text
+                    selectTrigger.style.color = "";
+                }
                 
                 setTimeout(() => {
                     btn.innerText = originalText;

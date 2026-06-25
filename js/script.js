@@ -188,17 +188,27 @@ document.addEventListener('DOMContentLoaded', () => {
             
             setTimeout(() => {
                 btn.innerText = '제출 완료 (RESPONSE SECURED)';
-                btn.style.backgroundColor = '#4CAF50';
-                btn.style.color = '#fff';
+                btn.style.backgroundColor = '#fff';
+                btn.style.color = '#000';
                 btn.style.opacity = '1';
                 
-                // Construct WhatsApp message
-                const phone = "6281234567890"; // TODO: Ganti dengan nomor WhatsApp tujuan
-                const waText = `Halo, saya ${name}.\nKonfirmasi Kehadiran: ${attendance}\nPesan: ${message}`;
-                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
+                // Create response element
+                const responseList = document.getElementById('responseList');
+                const responseItem = document.createElement('div');
+                responseItem.className = 'response-item';
                 
-                // Open WhatsApp in new tab
-                window.open(waUrl, '_blank');
+                const statusText = attendance === 'Hadir' ? 'Hadir' : 'Tidak Hadir';
+                
+                responseItem.innerHTML = `
+                    <div class="response-header">
+                        <div class="response-name">${name.replace(/</g, "&lt;")}</div>
+                        <div class="response-status">${statusText}</div>
+                    </div>
+                    <div class="response-message">${message.replace(/</g, "&lt;").replace(/\n/g, '<br>')}</div>
+                `;
+                
+                // Prepend to list
+                responseList.prepend(responseItem);
                 
                 rsvpForm.reset();
                 trigger.innerText = "참석하시겠습니까? (Will you attend?)"; // reset custom select text

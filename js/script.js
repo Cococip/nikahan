@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const responseItem = document.createElement('div');
                 responseItem.className = 'response-item';
                 
-                const statusText = attendance === 'Hadir' ? 'Hadir' : 'Tidak Hadir';
+                const statusText = attendance === 'Hadir' ? '참석 (Attending)' : '불참 (Not Attending)';
                 
                 responseItem.innerHTML = `
                     <div class="response-header">

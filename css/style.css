@@ -432,16 +432,25 @@ img { width: 100%; display: block; }
 /* Guestbook Responses */
 .response-list {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1.5rem;
     width: 100%;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+}
+.response-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 .response-item {
+    flex: 0 0 300px;
     padding: 1.5rem;
     border: 1px solid var(--border-color);
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.02);
     animation: fadeIn 0.5s ease;
+    scroll-snap-align: start;
 }
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
